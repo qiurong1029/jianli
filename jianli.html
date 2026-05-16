@@ -19,7 +19,7 @@
             --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.04);
-            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0, 0.04);
             --radius-sm: 8px;
             --radius: 12px;
             --radius-lg: 16px;
@@ -148,6 +148,9 @@
         }
         .nav-links a:hover::after {
             width: 100%;
+        }
+        .nav-links a.nav-active {
+            color: var(--accent) !important;
         }
         .nav-hamburger {
             display: none;
@@ -815,8 +818,8 @@
 
         /* ============ SCROLL REVEAL ============ */
         .reveal {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 0;
+            transform: translateY(20px);
             transition: opacity 0.7s ease, transform 0.7s var(--transition-smooth);
         }
         .reveal.visible {
@@ -1157,164 +1160,4 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-date">2022.09 - 2026.06</div>
                     <div class="timeline-title">南华大学 · 人工智能专业</div>
-                    <div class="timeline-subtitle">本科在读 · GPA 3.85/4.0（前5%）</div>
-                    <div class="timeline-desc">核心课程均90+，连续两年获校级一等奖学金、"三好学生""优秀学习标兵"，通过计算机二级Python、三级数据库技术考试。</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2024.07 - 2024.09</div>
-                    <div class="timeline-title">中科智联科技 · AI算法实习生</div>
-                    <div class="timeline-subtitle">人工智能研发部</div>
-                    <div class="timeline-desc">完成2000+张图像标注，基于TensorFlow复现CNN模型，训练时间缩短20%；参与Docker部署测试，3条优化建议均被采纳；模型准确率从85%提升至92%。</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2023.11 - 2024.06</div>
-                    <div class="timeline-title">南华大学AI实验室 · 科研助理</div>
-                    <div class="timeline-subtitle">兼职 · 深度学习目标检测方向</div>
-                    <div class="timeline-desc">协助改进YOLOv8特征提取模块，参与撰写科研论文1篇（已投稿核心期刊）；负责服务器维护与训练任务管理。</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-date">2024.04 - 2024.08</div>
-                    <div class="timeline-title">全国大学生人工智能创新大赛 · 省级二等奖</div>
-                    <div class="timeline-subtitle">核心算法工程师（3人团队）</div>
-                    <div class="timeline-desc">基于改进U-Net的智能医疗影像分割系统，引入注意力机制，准确率提升8.3%，推理速度提升15%。</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contact">
-            <div class="section-header reveal">
-                <span class="section-tag">取得联系</span>
-                <h2 class="section-title">一起聊聊AI与内容</h2>
-                <span class="section-line"></span>
-            </div>
-            <div class="contact-card reveal">
-                <h3>📬 期待与你交流</h3>
-                <p style="color:var(--text-secondary);margin-bottom:8px;">如果你对AI技术传播、内容策划感兴趣，欢迎随时联系我。</p>
-                <p class="contact-email">limuyang@email.com &nbsp;|&nbsp; 138XXXX8901</p>
-                <div class="contact-links">
-                    <a href="mailto:limuyang@email.com" class="contact-link-item">📧 发送邮件</a>
-                    <a href="https://github.com/limuyang123" target="_blank" rel="noopener" class="contact-link-item">💻 GitHub</a>
-                    <a href="#" class="contact-link-item">📄 下载简历PDF</a>
-                </div>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <p>© 2025 李沐阳 · 用代码与文字，连接AI与大众</p>
-        </footer>
-
-    </div>
-
-    <script>
-        const navBar = document.getElementById('navBar');
-        const navLinks = document.getElementById('navLinks');
-        const navHamburger = document.getElementById('navHamburger');
-
-        window.addEventListener('scroll', () => {
-            navBar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        navHamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            navHamburger.classList.toggle('active');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                navHamburger.classList.remove('active');
-            });
-        });
-
-        const typingTextEl = document.getElementById('typingText');
-        const typingPhrases = [
-            '> 正在构建神经网络...',
-            '> 探索AI与内容的交叉点...',
-            '> 用文字让算法变得可感知...',
-            '> 寻找技术传播的最优解...',
-            '> AI Content Strategist mode on.',
-        ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 80;
-
-        function typeLoop() {
-            const currentPhrase = typingPhrases[phraseIndex];
-            if (isDeleting) {
-                charIndex--;
-                typingSpeed = 30;
-            } else {
-                charIndex++;
-                typingSpeed = 60 + Math.random() * 30;
-            }
-            typingTextEl.textContent = currentPhrase.substring(0, charIndex);
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typingSpeed = 1600;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % typingPhrases.length;
-                typingSpeed = 350;
-            }
-            setTimeout(typeLoop, typingSpeed);
-        }
-        typeLoop();
-
-        const revealEls = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-        revealEls.forEach(el => revealObserver.observe(el));
-
-        document.querySelectorAll('.spark-container[data-spark]').forEach(container => {
-            container.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const spark = document.createElement('span');
-                spark.classList.add('spark');
-                spark.style.left = x + 'px';
-                spark.style.top = y + 'px';
-                const size = Math.random() * 4 + 2;
-                spark.style.width = size + 'px';
-                spark.style.height = size + 'px';
-                const colors = ['#1e3a5f', '#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe'];
-                spark.style.background = colors[Math.floor(Math.random() * colors.length)];
-                spark.style.boxShadow = `0 0 8px ${spark.style.background}`;
-                spark.style.setProperty('--sx', (Math.random() - 0.5) * 60 + 'px');
-                spark.style.setProperty('--sy', (Math.random() - 0.5) * 60 + 'px');
-                this.appendChild(spark);
-                setTimeout(() => spark.remove(), 700);
-            });
-        });
-
-        const sections = document.querySelectorAll('section[id]');
-        const allNavLinks = document.querySelectorAll('.nav-links a');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - 160) {
-                    current = section.getAttribute('id');
-                }
-            });
-            allNavLinks.forEach(link => {
-                link.style.color = '';
-                if (link.getAttribute('href') === '#' + current) {
-                    link.style.color = '#1e3a5f';
-                }
-            });
-        });
-
-        console.log('%c李沐阳 · AI内容策划作品集 %c简约专业版已就绪',
-            'font-size:1em;font-weight:bold;color:#1e3a5f;',
-            'color:#4b5563;');
-    </script>
-</body>
-</html>
+                    <div class="timeline-subtitle">本科在读 · GPA
